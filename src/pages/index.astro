@@ -1,108 +1,443 @@
----
-import Layout from '../components/layout.astro';
----
-
-<style>
-.steps {
-  background: var(--light);
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: min(90vw, 250px);
-  justify-content: center;
-  margin-top: 3rem;
-  padding: 5rem 5vw;
-  width: 100vw;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figaro Official</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-image:url("backgrund.svg");
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #0D0E21;
+        opacity:0;
+      transition: opacity .9s;
+    }
+html {
+  cursor: url("normal.svg"), auto
 }
 
-@media (min-width: 550px) {
-  .steps {
-    grid-template-columns: repeat(2, min(calc(50% - 1rem), 250px));
+
+    .bottom-svg {
+     z-index: 0;
+      position:fixed;
+     bottom: 20px;
+     transform: scale(105%) translateY(10%)
+    }
+
+    .blue-section {
+      width: 100%;
+      height: 12%;
+      background-color: #0D0E21;
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      z-index: 2;
+      box-shadow: 0 8px 0px rgba(0, 0, 5, 0.3);
+    }
+     .blue-section-text {
+      font-size: calc(4vw + 4vh);
+      font-family: 'Montserrat Subrayada', sans-serif;
+      background-color: #B58622;
+      color: transparent;
+      text-shadow: 3px 2px 0px #ECB236;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+      text-align:center;
+    }
+
+
+   .container1 {
+    position:relative;
+    height:70%;
+    width:20%;
+    top:2%;
+    border: 5px solid #1B1B28;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #212130;
+    padding: 1%;
+    left:2%;
+    box-shadow:-10px 10px 10px 0px rgba(0,0,0,0.25);
+    }
+   .container1 .album img{
+     width:100%;
+     height:100%;
+     cursor: url("pointer.svg"), auto
+      }
+  .album {
+    height: 30%;
+    background-color: #1B1D3E;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow:0px 10px 0px 0px #0d0e21;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: url("pointer.svg"), auto
+}
+.album:hover {
+  transform: translate(0, 10px);
+  box-shadow:0px 0px 0px 0px #0d0e21;
+}
+.album:active  {
+  transform: translate(0, 20px);
+  box-shadow:0px -10px 0px 0px #0d0e21 ;
+}
+   .container1 .info img{
+     width:100%;
+     height:100%;
+     cursor: url("pointer.svg"), auto
+      }
+  .info {
+    height: 30%;
+    background-color: #1B1D3E;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow:0px 10px 0px 0px #0d0e21;
+    cursor:pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-top:30px;
+}
+.info:hover {
+  transform: translate(0, 10px);
+  box-shadow:0px 0px 0px 0px #0d0e21;
+}
+.info:active  {
+  transform: translate(0, 20px);
+  box-shadow:0px -10px 0px 0px #0d0e21 ;
+}
+
+
+   .container2 {
+    position:relative;
+    height:70%;
+    width:40%;
+    top:2%;
+    border: 5px solid #1B1B28;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #212130;
+    padding: 1%;
+    left:-3%;
+    box-shadow:10px 10px 10px 0px rgba(0,0,0,0.25);
+    }
+   .container2 img[src="Figaro Nr 1.jpg"]{
+    position:relative;
+    border-radius: 10px;
+    border-width:10px;
+    border-color:#1b1b28;
+    border-style:solid;
+    }
+     .container2-text {
+      font-family:'Montserrat', sans-serif;
+      font-style:normal;
+      font-weight:700;
+      font-size: calc(3vw + 3vh);
+      background-color: #B58622;
+      color: transparent;
+      text-shadow: 4px 3px 0px #ECB236;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+}
+     .container2 .container2-buttom{
+      position:relative;
+      top:5%;
+      text-align:center;
+      line-height:50px;
+      font-family:'Montserrat', sans-serif;
+      font-style:normal;
+      font-weight:500;
+      font-size: calc(1.3vw + 1.3vh);
+      color:#ecb236; /* If Normal #ecb236 If Bad #d62828 */
+}
+     .container2 .container2-buttom2{
+      position:relative;
+      top:5%;
+      text-align:center;
+      line-height:50px;
+      font-family:'Montserrat', sans-serif;
+      font-style:normal;
+      font-weight:500;
+      font-size: calc(1.3vw + 1.3vh);
+      color:#ecb236;
+      cursor: url("pointer.svg"), auto
+
+}
+   .container-info {
+    left:0%;
+    top:2%;
+    position:relative;
+    height:0%;
+    width:70%;
+    border: 5px solid #1B1B28;
+    border-radius: 10px;
+    align-items: center;
+    background-color: #212130;
+    transition: padding 0.7s ease-in-out;
+    z-index:1;
+    visibility:hidden;
+    padding: 1%;
+    margin-right:70px;
+    margin-left:70px;
+    box-shadow:0px 10px 10px 0px rgba(0,0,0,0.25);
+   }
+   #demo img{
+    width:5%;
+    position:relative;
+    top:15px;
+    left:15px;
+    opacity:0%;
+    transition: opacity 0.5s;
+    cursor: url("pointer.svg"), auto
+   }
+     .infotext {
+      top:15px;
+      left:15px;
+      position:relative;
+      line-height:50px;
+      font-family:'Montserrat', sans-serif;
+      font-style:normal;
+      font-weight:500;
+      font-size: calc(1.4vw + 1.4vh);
+      color:#ecb236;
+      opacity:0%;
+      transition: opacity 0.5s;
+}
+        #music_container {
+            position:absolute;
+            width:  75%;
+            height: 50%;
+            border: 10px solid #0e0e14;
+            border-radius: 50%;
+            background-color: #1B1B28;
+
+        }
+        #music_container2 {
+            border-radius: 2%;
+            position:absolute;
+            width: 20%;
+            height: 69%;
+            top:14%;
+            left:20%;
+            padding:20px;
+            border: 5px solid #1B1B28;
+            background-color: #212130;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow:0px 10px 10px 0px rgba(0,0,0,0.25);
+        }
+        #music_cube {
+            z-index:1;
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            position: absolute;
+            top: calc(50% - 165px); /* Adjusted initial position */
+            left: calc(50% - 25.5px); /* Adjusted initial position */
+            border-radius: 50%;
+            border: 6px solid #BC8B24;
+            background-color: #ECB236;
+            cursor: url("pointer.svg"), auto
+        }
+                #music_circle {
+            z-index:1;
+            width: 20%;
+            height: 20%;
+            background-color: red;
+            position: absolute;
+            top: calc(50% - 30px); /* Adjusted initial position */
+            left: calc(50% - 29px); /* Adjusted initial position */
+            border-radius: 50%;
+            border: 4px solid #0D0E21;
+            background-color: #1B1D3E;
+        }
+        #music_stick {
+            width: 20px;
+            height: 160px;
+            background-color: #0D0E21;
+            position: relative;
+            left: calc(50% - 10px);
+            top: calc(50% - 160px); /* Adjusted initial position */
+            transform-origin: bottom center;
+            border-radius: 2%;
+        }
+        #music_container2 img {
+        position: relative;
+        top:67%;
+        height:35%;
+        }
+    }
+
+  </style>
+</head>
+<body>
+<div class="container1">
+  <span class="album">
+    <span onclick="transitionToPage('album.html')">
+   <img src="Property 1=Default.svg"/>
+    </span>
+  </span>
+  <span class="info">
+   <img src="Property 1=Default2.svg" onclick="myFunction()"/>
+  </span>
+</div>
+<audio id="audio" src="OnlyYou.wav"></audio>
+<div id="music_container2">
+  <img src="Speaker.svg">
+<div id="music_container">
+  <div id="music_cube"></div>
+  <div id="music_stick"></div>
+  <div id="music_circle"></div>
+</div>
+</div>
+<div class="container-info" id="demo">
+  <img src="close.svg" alt="close"  onclick="myFunction2()" id="close">
+  <div class="infotext" id="text">He is a dog</div>
+</div>
+<div class="container2" id="ExDemo">
+  <div class="container2-text">News</div>
+  <img src="Photos/Figaro Nr 1.jpg" alt="Figaro Strand" width="100%">
+  <div class="container2-buttom">He got new hair cut </div>
+  <div class="container2-buttom2" onclick="transitionToPage('News.html')"><u>View More</u></div>
+</div>
+</div>
+<div class="blue-section">
+  <div class="blue-section-text">Figaro Official</div>
+</div>
+</div>
+<div class="bottom-svg">
+  <img src="Group 1.svg" alt="Group 1 SVG">
+</div>
+<script>
+  function myFunction() {
+      document.getElementById("demo").style.padding = "0px 25px 35.1% 0px";
+      document.getElementById("demo").style.visibility = "visible";
+      setTimeout(function() {
+      document.getElementById("close").style.opacity = "1.0";
+      document.getElementById("text").style.opacity = "1.0";
+      }, 200);
   }
-}
-
-@media (min-width: 1050px) {
-  .steps {
-    grid-template-columns: repeat(4, min(calc(25% - 1.5rem), 250px));
+  function myFunction2() {
+      document.getElementById("demo").style.padding = "0px 25px 0% 0px";
+      document.getElementById("close").style.opacity = "0.0";
+      document.getElementById("text").style.opacity = "0.0";
+      setTimeout(function() {
+          document.getElementById("demo").style.visibility = "hidden";
+      }, 670);
   }
+    window.transitionToPage = function(href) {
+  document.querySelector('body').style.opacity = 0
+  setTimeout(function() {
+  window.location.href = href
+  }, 800)
+  }
+
+  document.addEventListener('DOMContentLoaded', function(event) {
+  document.querySelector('body').style.opacity = 1
+  })
+</script>
+<script>
+  const cube = document.getElementById('music_cube');
+  const stick = document.getElementById('music_stick');
+  const container = document.getElementById('music_container');
+  const audio = document.getElementById('audio'); // Reference to audio element
+  const radius = 150; // radius of the circular path
+  const centerX = container.offsetWidth / 2.1;
+  const centerY = container.offsetHeight / 2;
+  const numPoints = 100; // number of points in the circle
+  const path = [];
+  let prevX = 0;
+  let prevY = 0;
+
+  // Generate points along the circular path
+  for (let i = 0; i < numPoints; i++) {
+      const angle = (i / numPoints) * 2 * Math.PI;
+      const x = centerX + radius * Math.cos(angle);
+      const y = centerY + radius * Math.sin(angle);
+      path.push({ x, y });
+  }
+
+  let isDragging = false;
+  const stickRotationOffset = -90; // Adjust rotation offset here
+
+
+function moveCube(event) {
+    if (isDragging) {
+        const { x, y } = container.getBoundingClientRect();
+        const mouseX = event.clientX - x;
+        const mouseY = event.clientY - y;
+        const nearestPoint = findNearestPoint(mouseX, mouseY);
+        cube.style.left = path[nearestPoint].x - cube.offsetWidth / 2 + 'px';
+        cube.style.top = path[nearestPoint].y - cube.offsetHeight / 2 + 'px';
+
+        // Rotate stick
+        const dx = centerX - path[nearestPoint].x;
+        const dy = centerY - path[nearestPoint].y;
+        const angle = Math.atan2(dy, dx) * (180 / Math.PI) + stickRotationOffset;
+        stick.style.transform = `rotate(${angle}deg)`;
+
+
+        if (isDragging = true) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+
+        // Update previous position
+        prevX = mouseX;
+        prevY = mouseY;
+    } else {
+        // Stop audio when not dragging
+        audio.pause();
+    }
 }
 
-.step {
-  background: var(--white);
-  border: 1px solid var(--lightBorder);
-  border-radius: var(--card-radius);
-  display: flex;
-  flex-direction: column;
-  font-size: 0.75rem;
-  padding: 1rem 1.5rem 1.5rem;
-  text-align: left;
-  box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
-}
+  function findNearestPoint(x, y) {
+      let minDistance = Infinity;
+      let nearestPointIndex = 0;
 
-.stepHeading {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0;
-}
+      path.forEach((point, index) => {
+          const distance = Math.sqrt((point.x - x) ** 2 + (point.y - y) ** 2);
+          if (distance < minDistance) {
+              minDistance = distance;
+              nearestPointIndex = index;
+          }
+      });
+
+      return nearestPointIndex;
+  }
+
+  cube.addEventListener('mousedown', () => {
+      isDragging = true;
+  });
+
+  document.addEventListener('mousemove', moveCube);
+
+  document.addEventListener('mouseup', () => {
+      isDragging = false;
+  });
 
 
-</style>
+  // Initial rotation of the stick
+  const dx = centerX - parseFloat(cube.style.left) - 25; // adjust for cube's width
+  const dy = centerY - parseFloat(cube.style.top) - 25; // adjust for cube's height
+  const initialAngle = Math.atan2(dy, dx) * (180 / Math.PI) + stickRotationOffset;
+  stick.style.transform = `rotate(${initialAngle}deg)`;
 
-<Layout
-  title="Netlify Feature Tour"
-  description="This is a small site to show the most powerful features of Netlify quickly!"
-  home
->
-  <main class="steps">
-    <section class="step">
-      <h2 class="stepHeading">Deploy Previews</h2>
-      <p>
-        Every pull request is automatically built in an
-        identical-to-production environment for
-        <strong>painless QA, feedback, and review.</strong>
-      </p>
-      <a href="/deploy-previews" class="button">
-        Learn more <span class="sr-only">about Deploy Previews</span>
-      </a>
-    </section>
-
-    <section class="step">
-      <h2 class="stepHeading">Instant Rollbacks</h2>
-      <p>
-        Confidently ship to production with the knowledge that it’s a
-        one-click operation to roll back to a previous version of the site.
-        <strong>Instant disaster recovery!</strong>
-      </p>
-      <a href="/instant-rollbacks" class="button">
-        Learn more
-        <span class="sr-only">about Instant Rollbacks</span>
-      </a>
-    </section>
-
-    <section class="step">
-      <h2 class="stepHeading">Netlify Functions</h2>
-      <p>
-        <strong>Serverless functions are superpowers for web developers!</strong>
-        Securely handle server-like requirements at any scale with no
-        provisioning, scaling, or ops overhead.
-      </p>
-      <a href="/functions" class="button">
-      Learn more
-      <span class="sr-only">about Netlify Functions</span>
-      </a>
-    </section>
-
-    <section class="step">
-      <h2 class="stepHeading">Netlify Forms</h2>
-      <p>
-        Handle user input with a single line of code. Netlify Forms allow
-        any HTML form to
-        <strong>
-            accept submissions, send notification emails, and trigger custom events.
-        </strong>
-      </p>
-      <a href="/netlify-forms" class="button">
-        Learn more <span class="sr-only">about Netlify Forms</span>
-      </a>
-    </section>
-  </main>
-</Layout>
+</script>
+</body>
+</html>
